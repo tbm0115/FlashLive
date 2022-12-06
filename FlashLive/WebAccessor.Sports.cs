@@ -14,7 +14,7 @@ namespace FlashLive
         /// <typeparam name="T">Reference to the output <see cref="Event"/> type.</typeparam>
         /// <param name="options">Container of query options for the API request.</param>
         /// <returns>Array of implemented <see cref="Event"/>s.</returns>
-        public async Task<Sport[]> GetSportsAsync()
+        public async Task<SportsResponse.Sport[]> GetSportsAsync()
         {
             var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/sports/list");
 

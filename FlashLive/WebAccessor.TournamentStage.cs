@@ -13,7 +13,7 @@ namespace FlashLive
         /// </summary>
         /// <param name="options">Container of query options for the API request.</param>
         /// <returns>Array of implemented <see cref="TournamentStageData"/>s.</returns>
-        public async Task<TournamentStageData> GetTournamentStagesAsync(TournamentStageRequestOptions options)
+        public async Task<TournamentStageResponse.TournamentStageData> GetTournamentStagesAsync(TournamentStageRequestOptions options)
         {
             var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/tournaments/stages/data");
             options.AddUrlParameters(ref uriBuilder);
