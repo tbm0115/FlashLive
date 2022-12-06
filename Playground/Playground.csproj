@@ -5,12 +5,12 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>98fa5d5d-3aeb-45d9-af8e-ab8a82fed13f</UserSecretsId>
+    <UserSecretsId>02894b9d-8fc8-46ff-b989-b9b84c99ec08</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Consoul" Version="1.5.14" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
   </ItemGroup>
 
   <ItemGroup>
