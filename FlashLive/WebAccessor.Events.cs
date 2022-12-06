@@ -2,6 +2,7 @@
 using FlashLive.Models.Contracts;
 using FlashLive.Models.Contracts.Enums;
 using FlashLive.Models.RequestOptions;
+using FlashLive.Models.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace FlashLive
         /// <typeparam name="T">Reference to the output <see cref="Event"/> type.</typeparam>
         /// <param name="options">Container of query options for the API request.</param>
         /// <returns>Array of implemented <see cref="Event"/>s.</returns>
-        public async Task<T[]> GetEventsAsync<T>(EventRequestOptions<T> options) where T : Event
+        public async Task<T[]> GetEventsAsync<T>(EventsRequestOptions<T> options) where T : Event
         {
             var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/events/list");
             options.AddUrlParameters(ref uriBuilder);
@@ -30,11 +31,11 @@ namespace FlashLive
         /// <summary>
         /// Gets a list of <see cref="Event"/>s of a particular sports <paramref name="league"/> based on the provided <paramref name="options"/>.
         /// </summary>
-        /// <typeparam name="T"><inheritdoc cref="GetEventsAsync{T}(EventRequestOptions{T})" path="/typeparam[@name='T']"/></typeparam>
-        /// <param name="options"><inheritdoc cref="GetEventsAsync{T}(EventRequestOptions{T})" path="/param[@name='options']"/></param>
+        /// <typeparam name="T"><inheritdoc cref="GetEventsAsync{T}(EventsRequestOptions{T})" path="/typeparam[@name='T']"/></typeparam>
+        /// <param name="options"><inheritdoc cref="GetEventsAsync{T}(EventsRequestOptions{T})" path="/param[@name='options']"/></param>
         /// <param name="league">Refernce to the sports league to query.</param>
-        /// <returns><inheritdoc cref="GetEventsAsync{T}(EventRequestOptions{T})" path="/returns"/></returns>
-        public async Task<T[]> GetEventsAsync<T>(EventRequestOptions<T> options, string league) where T : Event
+        /// <returns><inheritdoc cref="GetEventsAsync{T}(EventsRequestOptions{T})" path="/returns"/></returns>
+        public async Task<T[]> GetEventsAsync<T>(EventsRequestOptions<T> options, string league) where T : Event
         {
             // TODO: Verify this endpoint
             var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/{options.Sport}/{league}/events/list");

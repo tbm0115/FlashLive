@@ -43,12 +43,4 @@ namespace FlashLive.Models
         [JsonProperty("ACTIVE_DRAW_LEVEL")]
         public string ActiveDrawLevel { get; set; }
     }
-    public class Sport
-    {
-        [JsonProperty("ID")]
-        public int Id { get; set; }
-
-        [JsonProperty("NAME")]
-        public string Name { get; set; }
-    }
 }

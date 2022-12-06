@@ -21,7 +21,7 @@ namespace FlashLive.Playground
 
             using (var wa = new WebAccessor(rapidApiKey))
             {
-                var events = wa.GetEventsAsync(new Models.RequestOptions.EventRequestOptions<BaseballEvent>()
+                var events = wa.GetEventsAsync(new Models.RequestOptions.EventsRequestOptions<BaseballEvent>()
                 {
                     Sport = Models.Contracts.Enums.SportType.BASEBALL
                 }).Result;

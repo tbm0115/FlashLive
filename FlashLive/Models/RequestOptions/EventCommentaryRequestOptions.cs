@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FlashLive.Models.RequestOptions
 {
-    public class EventRequestOptions : IRequestOptions
+    public class EventCommentaryRequestOptions : IRequestOptions
     {
         internal const int EVENT_ID_MIN = 1;
         internal const int EVENT_ID_MAX = 10;

@@ -1,13 +1,11 @@
 ﻿using FlashLive.Models.Contracts;
 using Newtonsoft.Json;
 
-namespace FlashLive.Models
+namespace FlashLive.Models.Responses
 {
-    public class SportResponse : IResponse
+    public partial class SportsResponse : IResponse
     {
         [JsonProperty("DATA")]
         public Sport[] Data { get; set; }
-
-        public string LastChangeKey { get; set; }
     }
 }

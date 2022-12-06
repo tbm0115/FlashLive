@@ -8,11 +8,22 @@
     <Title>FlashLive API</Title>
     <Authors>tbm0115</Authors>
     <Description>A library for accessing the FlashLive sports API.</Description>
+    <PackageIcon>FlashLiveLogo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/tbm0115/FlashLive</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>API,FlashLive,Sports,C#,.NET</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="FlashLiveLogo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

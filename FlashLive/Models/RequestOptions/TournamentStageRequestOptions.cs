@@ -9,7 +9,7 @@ namespace FlashLive.Models.RequestOptions
     public class TournamentStageRequestOptions : IRequestOptions
     {
         /// <summary>
-        /// Tournament stage id.
+        /// EventDataTournament stage id.
         /// </summary>
         [Required]
         public string TournamentStageId { get; set; }

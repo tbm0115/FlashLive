@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FlashLive.Models.RequestOptions
 {
-    public class StageRequestOptions : IRequestOptions
+    public class StagesRequestOptions : IRequestOptions
     {
         [Required]
         public LocaleType Locale { get; set; } = LocaleType.en_INT;

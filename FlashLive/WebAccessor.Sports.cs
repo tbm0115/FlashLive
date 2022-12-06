@@ -1,10 +1,8 @@
 ﻿using FlashLive.Models.Contracts;
-using FlashLive.Models.RequestOptions;
 using FlashLive.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using FlashLive.Models.Responses;
 
 namespace FlashLive
 {
@@ -20,7 +18,7 @@ namespace FlashLive
         {
             var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/sports/list");
 
-            var response = await GetAsync<SportResponse>(uriBuilder.ToString());
+            var response = await GetAsync<SportsResponse>(uriBuilder.ToString());
 
             return response.Data;
         }

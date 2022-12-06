@@ -2,9 +2,10 @@
 
 namespace FlashLive.Models.Contracts
 {
+    /// <summary>
+    /// Generic implementation of a response from the FlashLive API.
+    /// </summary>
     public interface IResponse
     {
-        [JsonProperty("LAST_CHANGE_KEY")]
-        public string LastChangeKey { get; set; }
     }
 }
