@@ -1,0 +1,55 @@
+name: Publish to Package Registries
+
+on: 
+  release:
+    types:
+      - published
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Package
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@main
+      with:
+        dotnet-version: '3.1'
+    - name: Build project with dotnet
+      run: dotnet build "FlashLive\FlashLive.csproj" --configuration Release
+      
+    - name: Pack project
+      run: dotnet pack "FlashLive\FlashLive.csproj" --configuration Release -o finalpackage --no-build
+    
+    - name: Publish Artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: nupkg
+        path: finalpackage
+
+  deploy:
+    needs: build
+    name: Deploy Packages
+    runs-on: windows-latest
+    
+    steps:
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@main
+        with:
+          dotnet-version: '3.1'
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: nupkg
+      
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@main
+        with:
+          nuget-api-key: ${{ secrets.NUGETORG_API_KEY }}
+          nuget-version: latest
+          
+      - name: Push package to NuGet
+        run: dotnet nuget push nupkg\*.nupkg -k ${{ secrets.NUGETORG_API_KEY }} -s https://nuget.org --skip-duplicate
