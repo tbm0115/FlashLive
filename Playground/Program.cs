@@ -12,7 +12,7 @@ namespace FlashLive.Playground
         {
             Consoul.Write("Connecting to ESPN NFL Scoreboard...");
 
-            using (var wa = new WebAccessor("bae5d78bd1mshf7365ce2f1dd568p102ef5jsnac65870d5ef7"))
+            using (var wa = new WebAccessor(""))
             {
                 var events = wa.GetEventsAsync(new Models.RequestOptions.EventRequestOptions<BaseballEvent>()
                 {
