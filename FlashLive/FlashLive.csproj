@@ -4,6 +4,10 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
     <UserSecretsId>0da56940-d817-4b42-a75c-2037cc89c5df</UserSecretsId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>FlashLive API</Title>
+    <Authors>tbm0115</Authors>
+    <Description>A library for accessing the FlashLive sports API.</Description>
   </PropertyGroup>
 
   <ItemGroup>
