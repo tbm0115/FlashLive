@@ -1,6 +1,7 @@
 ﻿
 using ConsoulLibrary;
 using FlashLive.Models;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 
@@ -12,7 +13,13 @@ namespace FlashLive.Playground
         {
             Consoul.Write("Connecting to FlashLive API...");
 
-            using (var wa = new WebAccessor(""))
+            var config = new ConfigurationBuilder().AddUserSecrets<ApiConfig>().Build();
+
+            var secretProvider = config.Providers.First();
+
+            secretProvider.TryGet("RapidAPI", out var rapidApiKey);
+
+            using (var wa = new WebAccessor(rapidApiKey))
             {
                 var events = wa.GetEventsAsync(new Models.RequestOptions.EventRequestOptions<BaseballEvent>()
                 {
@@ -24,5 +31,9 @@ namespace FlashLive.Playground
 
             Consoul.Wait();
         }
+    }
+    public class ApiConfig
+    {
+        public string RapidApiKey { get; set; }
     }
 }

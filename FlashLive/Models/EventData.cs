@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace FlashLive.Models
 {
-    public class EventCategory<T> where T : Event
+    public class EventData<T> where T : Event
     {
         [JsonProperty("NAME")]
         public string Name { get; set; }

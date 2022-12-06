@@ -3,12 +3,10 @@ using Newtonsoft.Json;
 
 namespace FlashLive.Models
 {
-    public class EventResponse<T> : IResponse where T : Event
+    public class TournamentStageResponse : IResponse
     {
         [JsonProperty("DATA")]
-        public EventCategory<T>[] Data { get; set; }
-
-        // TODO: Add "META"
+        public TournamentStageData Data { get; set; }
 
         public string LastChangeKey { get; set; }
     }
