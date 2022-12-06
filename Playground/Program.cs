@@ -10,7 +10,7 @@ namespace FlashLive.Playground
     {
         public static void Main(string[] args)
         {
-            Consoul.Write("Connecting to ESPN NFL Scoreboard...");
+            Consoul.Write("Connecting to FlashLive API...");
 
             using (var wa = new WebAccessor(""))
             {

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace FlashLive
 {
+    /// <summary>
+    /// Accesses the FlashLive API on RapidAPI
+    /// </summary>
+    /// <see href="https://rapidapi.com/tipsters/api/flashlive-sports"/>
     public partial class WebAccessor : IDisposable
     {
         internal const string API_ROOT_URI = "https://flashlive-sports.p.rapidapi.com";
