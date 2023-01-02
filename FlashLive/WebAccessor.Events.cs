@@ -13,11 +13,11 @@ namespace FlashLive
     public partial class WebAccessor
     {
         /// <summary>
-        /// Gets a list of all <see cref="Event"/>s based on the provided <paramref name="options"/>.
+        /// Get a list of events by <c>sport_id</c>. <c>STAGE_TYPE</c>-main event status, <c>STAGE</c>-more event status.
         /// </summary>
-        /// <typeparam name="T">Reference to the output <see cref="Event"/> type.</typeparam>
-        /// <param name="options">Container of query options for the API request.</param>
-        /// <returns>Array of implemented <see cref="Event"/>s.</returns>
+        /// <remarks>Sends an asynchronous web request to the <c>events/list</c> endpoint.</remarks>
+        /// <param name="options">Options available for the <c>events/list</c> endpoint.</param>
+        /// <returns>Deserialized response</returns>
         public async Task<T[]> GetEventsAsync<T>(EventsRequestOptions<T> options) where T : Event
         {
             var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/events/list");

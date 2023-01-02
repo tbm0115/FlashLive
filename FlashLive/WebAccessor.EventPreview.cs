@@ -7,7 +7,13 @@ namespace FlashLive
 {
     public partial class WebAccessor
     {
-        public async Task<EventPreviewResponse.EventPreview[]> GetEventPreviewAsync(EventPreviewRequestOptions options)
+        /// <summary>
+        /// Get an event preview by event ID.
+        /// </summary>
+        /// <remarks>Sends an asynchronous web request to the <c>events/preview</c> endpoint.</remarks>
+        /// <param name="options">Options available for the <c>events/preview</c> endpoint.</param>
+        /// <returns>Deserialized response</returns>
+        public async Task<EventPreviewResponse> GetEventPreviewAsync(EventPreviewRequestOptions options)
         {
             // events/preview
             var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/events/preview");
@@ -15,7 +21,7 @@ namespace FlashLive
 
             var response = await GetAsync<EventPreviewResponse>(uriBuilder.ToString());
 
-            return response.Data;
+            return response;
         }
     }
 }

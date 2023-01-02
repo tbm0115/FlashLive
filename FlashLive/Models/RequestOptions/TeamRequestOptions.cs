@@ -15,6 +15,7 @@ namespace FlashLive.Models.RequestOptions
 
         [Required]
         public SportType Sport { get; set; }
+
         [Required]
         public int SportId => (int)Sport;
 
@@ -41,6 +42,12 @@ namespace FlashLive.Models.RequestOptions
                 throw new ArgumentOutOfRangeException($"team_id must be less than {TEAM_ID_MAX}");
             }
             queryParts.Add($"team_id={TeamId}");
+
+            if (SportId <= 0)
+            {
+                throw new ArgumentException("Must specify sport_id");
+            }
+            queryParts.Add($"sport_id={SportId}");
 
             if (!string.IsNullOrEmpty(uriBuilder.Query))
             {

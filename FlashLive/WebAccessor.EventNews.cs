@@ -7,7 +7,13 @@ namespace FlashLive
 {
     public partial class WebAccessor
     {
-        public async Task<EventNewsResponse.EventNews[]> GetEventNewsAsync(EventNewsRequestOptions options)
+        /// <summary>
+        /// Get news by event ID.
+        /// </summary>
+        /// <remarks>Sends an asynchronous web request to the <c>events/news</c> endpoint.</remarks>
+        /// <param name="options">Options available for the <c>events/news</c> endpoint.</param>
+        /// <returns>Deserialized response</returns>
+        public async Task<EventNewsResponse> GetEventNewsAsync(EventNewsRequestOptions options)
         {
             // events/news
             var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/events/news");
@@ -15,7 +21,7 @@ namespace FlashLive
 
             var response = await GetAsync<EventNewsResponse>(uriBuilder.ToString());
 
-            return response.Data;
+            return response;
         }
     }
 }

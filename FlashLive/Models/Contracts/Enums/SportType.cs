@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FlashLive.Models.Contracts.Enums
+﻿namespace FlashLive.Models.Contracts.Enums
 {
     public enum SportType
     {

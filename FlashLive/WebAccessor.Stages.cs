@@ -1,6 +1,4 @@
-﻿using FlashLive.Models.Contracts;
-using FlashLive.Models.RequestOptions;
-using FlashLive.Models;
+﻿using FlashLive.Models.RequestOptions;
 using System;
 using System.Threading.Tasks;
 using FlashLive.Models.Responses;
@@ -10,19 +8,20 @@ namespace FlashLive
     public partial class WebAccessor
     {
         /// <summary>
-        /// Gets a list of all <see cref="Event"/>s based on the provided <paramref name="options"/>.
+        /// Get a list of stages by sport ID.
         /// </summary>
-        /// <typeparam name="T">Reference to the output <see cref="Event"/> type.</typeparam>
-        /// <param name="options">Container of query options for the API request.</param>
-        /// <returns>Array of implemented <see cref="Event"/>s.</returns>
-        public async Task<StagesResponse.Stage[]> GetStagesAsync(StagesRequestOptions options)
+        /// <remarks>Sends an asynchronous web request to the <c>tournaments/stages</c> endpoint.</remarks>
+        /// <param name="options">Options available for the <c>tournaments/stages</c> endpoint.</param>
+        /// <returns>Deserialized response</returns>
+        public async Task<StagesResponse> GetStagesAsync(StagesRequestOptions options)
         {
+            // tournaments/stages
             var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/tournaments/stages");
             options.AddUrlParameters(ref uriBuilder);
 
             var response = await GetAsync<StagesResponse>(uriBuilder.ToString());
 
-            return response.Data;
+            return response;
         }
     }
 }

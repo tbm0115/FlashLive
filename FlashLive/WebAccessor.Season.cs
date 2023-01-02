@@ -7,7 +7,13 @@ namespace FlashLive
 {
     public partial class WebAccessor
     {
-        public async Task<SeasonResponse.Season[]> GetSeasonAsync(SeasonRequestOptions options)
+        /// <summary>
+        /// Get season data by <c>season_id</c>.
+        /// </summary>
+        /// <remarks>Sends an asynchronous web request to the <c>seasons/data</c> endpoint.</remarks>
+        /// <param name="options">Options available for the <c>seasons/data</c> endpoint.</param>
+        /// <returns>Deserialized response</returns>
+        public async Task<SeasonResponse> GetSeasonAsync(SeasonRequestOptions options)
         {
             // tournaments/seasons/data
             var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/tournaments/seasons/data");
@@ -15,7 +21,7 @@ namespace FlashLive
 
             var response = await GetAsync<SeasonResponse>(uriBuilder.ToString());
 
-            return response.Data;
+            return response;
         }
     }
 }

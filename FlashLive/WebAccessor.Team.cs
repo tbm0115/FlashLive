@@ -7,15 +7,21 @@ namespace FlashLive
 {
     public partial class WebAccessor
     {
-        public async Task<TeamResponse.Team> GetTeamAsync(TeamRequestOptions options)
+        /// <summary>
+        /// Get team data by team ID.
+        /// </summary>
+        /// <remarks>Sends an asynchronous web request to the <c>teams/data</c> endpoint.</remarks>
+        /// <param name="options">Options available for the <c>teams/data</c> endpoint.</param>
+        /// <returns>Deserialized response</returns>
+        public async Task<TeamResponse> GetTeamAsync(TeamRequestOptions options)
         {
             // teams/data
-            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/team/data");
+            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/teams/data");
             options.AddUrlParameters(ref uriBuilder);
 
             var response = await GetAsync<TeamResponse>(uriBuilder.ToString());
 
-            return response.Data;
+            return response;
         }
     }
 }
