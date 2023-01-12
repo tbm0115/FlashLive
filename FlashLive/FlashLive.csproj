@@ -12,9 +12,11 @@
     <RepositoryUrl>https://github.com/tbm0115/FlashLive</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>API,FlashLive,Sports,C#,.NET</PackageTags>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <PackageProjectUrl>https://github.com/tbm0115/FlashLive</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>symbols.nupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
