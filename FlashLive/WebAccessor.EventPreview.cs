@@ -14,14 +14,6 @@ namespace FlashLive
         /// <param name="options">Options available for the <c>events/preview</c> endpoint.</param>
         /// <returns>Deserialized response</returns>
         public async Task<EventPreviewResponse> GetEventPreviewAsync(EventPreviewRequestOptions options)
-        {
-            // events/preview
-            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/events/preview");
-            options.AddUrlParameters(ref uriBuilder);
-
-            var response = await GetAsync<EventPreviewResponse>(uriBuilder.ToString());
-
-            return response;
-        }
+            => await GetAsync<EventPreviewResponse>("events/preview", options);
     }
 }

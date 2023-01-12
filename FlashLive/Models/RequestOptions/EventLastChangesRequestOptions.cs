@@ -6,15 +6,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FlashLive.Models.RequestOptions
 {
-    public class EventNewsRequestOptions : IRequestOptions
+    public class EventLastChangesRequestOptions : IRequestOptions
     {
+        [Required]
+        public LocaleType Locale { get; set; } = LocaleType.en_INT;
+
         internal const int EVENT_ID_MIN = 1;
         internal const int EVENT_ID_MAX = 10;
         [Required, MinLength(EVENT_ID_MIN), MaxLength(EVENT_ID_MAX)]
         public string EventId { get; set; }
 
-        [Required]
-        public LocaleType Locale { get; set; } = LocaleType.en_INT;
 
         public void AddUrlParameters(ref UriBuilder uriBuilder)
         {

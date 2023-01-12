@@ -5,7 +5,6 @@ using FlashLive.Models.RequestOptions;
 using FlashLive.Models.Responses;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace FlashLive
@@ -18,15 +17,8 @@ namespace FlashLive
         /// <remarks>Sends an asynchronous web request to the <c>events/list</c> endpoint.</remarks>
         /// <param name="options">Options available for the <c>events/list</c> endpoint.</param>
         /// <returns>Deserialized response</returns>
-        public async Task<T[]> GetEventsAsync<T>(EventsRequestOptions<T> options) where T : Event
-        {
-            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/events/list");
-            options.AddUrlParameters(ref uriBuilder);
-
-            var response = await GetAsync<EventsResponse<T>>(uriBuilder.ToString());
-
-            return response.Data.SelectMany(o => o.Events).ToArray();
-        }
+        public async Task<EventsResponse<T>> GetEventsAsync<T>(EventsRequestOptions<T> options) where T : Event
+            => await GetAsync<EventsResponse<T>>("events/list", options);
 
         /// <summary>
         /// Gets a list of <see cref="Event"/>s of a particular sports <paramref name="league"/> based on the provided <paramref name="options"/>.
@@ -35,16 +27,8 @@ namespace FlashLive
         /// <param name="options"><inheritdoc cref="GetEventsAsync{T}(EventsRequestOptions{T})" path="/param[@name='options']"/></param>
         /// <param name="league">Refernce to the sports league to query.</param>
         /// <returns><inheritdoc cref="GetEventsAsync{T}(EventsRequestOptions{T})" path="/returns"/></returns>
-        public async Task<T[]> GetEventsAsync<T>(EventsRequestOptions<T> options, string league) where T : Event
-        {
-            // TODO: Verify this endpoint
-            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/{options.Sport}/{league}/events/list");
-            options.AddUrlParameters(ref uriBuilder);
-
-            var response = await GetAsync<EventsResponse<T>>(uriBuilder.ToString());
-
-            return response.Data.SelectMany(o => o.Events).ToArray();
-        }
+        public async Task<EventsResponse<T>> GetEventsAsync<T>(EventsRequestOptions<T> options, string league) where T : Event
+            => await GetAsync<EventsResponse<T>>(league + "/events/brief", options);
 
         internal static Dictionary<Type, SportType> SportTypeLookup = new Dictionary<Type, SportType>
         {

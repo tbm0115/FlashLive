@@ -13,13 +13,6 @@ namespace FlashLive
         /// <param name="options">Options available for the <c>sports/list</c> endpoint.</param>
         /// <returns>Deserialized response</returns>
         public async Task<SportsResponse> GetSportsAsync()
-        {
-            // sports/list
-            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/sports/list");
-
-            var response = await GetAsync<SportsResponse>(uriBuilder.ToString());
-
-            return response;
-        }
+            => await GetAsync<SportsResponse>("sports/list");
     }
 }

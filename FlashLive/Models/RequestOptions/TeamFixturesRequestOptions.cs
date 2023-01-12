@@ -36,6 +36,12 @@ namespace FlashLive.Models.RequestOptions
                 $"locale={Locale}"
             };
 
+            if (SportId <= 0)
+            {
+                throw new ArgumentException("Must specify sport_id");
+            }
+            queryParts.Add($"sport_id={SportId}");
+
             if (string.IsNullOrEmpty(TeamId))
             {
                 throw new ArgumentException("Must specify team_id");

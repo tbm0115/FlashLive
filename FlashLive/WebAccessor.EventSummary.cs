@@ -12,9 +12,10 @@ namespace FlashLive
         /// <param name="options">Options available for the <c>events/summary</c> endpoint.</param>
         /// <returns>Deserialized response</returns>
         /// <exception cref="NotImplementedException" />
+        [Obsolete("Not Implemented Yet")]
         public async Task GetEventSummaryAsync()
         {
-            // events/summary
+            // TODO: events/summary
             throw new NotImplementedException();
         }
     }

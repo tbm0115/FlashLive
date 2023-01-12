@@ -14,14 +14,6 @@ namespace FlashLive
         /// <param name="options">Options available for the <c>events/lineups</c> endpoint.</param>
         /// <returns>Deserialized response</returns>
         public async Task<EventLineupsResponse> GetEventLineupsAsync(EventLineupsRequestOptions options)
-        {
-            // events/lineups
-            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/events/lineups");
-            options.AddUrlParameters(ref uriBuilder);
-
-            var response = await GetAsync<EventLineupsResponse>(uriBuilder.ToString());
-
-            return response;
-        }
+            => await GetAsync<EventLineupsResponse>("events/lineups", options);
     }
 }

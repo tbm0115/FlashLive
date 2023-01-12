@@ -14,14 +14,6 @@ namespace FlashLive
         /// <param name="options">Options available for the <c>events/report</c> endpoint.</param>
         /// <returns>Deserialized response</returns>
         public async Task<EventReportResponse> GetEventReportAsync(EventReportRequestOptions options)
-        {
-            // events/report
-            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/events/report");
-            options.AddUrlParameters(ref uriBuilder);
-
-            var response = await GetAsync<EventReportResponse>(uriBuilder.ToString());
-
-            return response;
-        }
+            => await GetAsync<EventReportResponse>("events/report", options);
     }
 }

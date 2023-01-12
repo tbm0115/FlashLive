@@ -14,7 +14,7 @@ namespace FlashLive.Models.RequestOptions
         public string EventId { get; set; }
 
         [Required]
-        public LocaleType Locale { get; set; }
+        public LocaleType Locale { get; set; } = LocaleType.en_INT;
 
         public void AddUrlParameters(ref UriBuilder uriBuilder)
         {

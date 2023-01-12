@@ -5,9 +5,10 @@ namespace FlashLive
 {
     public partial class WebAccessor
     {
+        [Obsolete("Not Implemented Yet")]
         public async Task GetRankingsAsync()
         {
-            // rankings/list
+            // TODO: rankings/list
             throw new NotImplementedException();
         }
     }

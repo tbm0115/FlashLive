@@ -15,13 +15,6 @@ namespace FlashLive
         /// <param name="options">Options available for the <c>tournaments/stages/data</c> endpoint.</param>
         /// <returns>Deserialized response</returns>
         public async Task<TournamentStageResponse> GetTournamentStagesAsync(TournamentStageRequestOptions options)
-        {
-            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/tournaments/stages/data");
-            options.AddUrlParameters(ref uriBuilder);
-
-            var response = await GetAsync<TournamentStageResponse>(uriBuilder.ToString());
-
-            return response;
-        }
+            => await GetAsync<TournamentStageResponse>("tournaments/stages/data", options);
     }
 }

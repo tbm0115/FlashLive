@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using FlashLive.Models.Contracts;
+using FlashLive.Models.Responses;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Net.Http;
@@ -57,6 +59,18 @@ namespace FlashLive
             var result = JsonConvert.DeserializeObject<T>(json, jsonOptions);
             if (result == null) throw new NullReferenceException();
             return result;
+        }
+
+        public async Task<T> GetAsync<T>(string endpoint, IRequestOptions? options = null) where T : IResponse
+        {
+            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/{endpoint}");
+
+            if (options != null)
+                options.AddUrlParameters(ref uriBuilder);
+
+            var response = await GetAsync<T>(uriBuilder.ToString());
+
+            return response;
         }
 
         public void Dispose()

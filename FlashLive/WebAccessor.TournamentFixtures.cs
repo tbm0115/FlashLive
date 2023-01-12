@@ -14,14 +14,6 @@ namespace FlashLive
         /// <param name="options">Options available for the <c>tournaments/fixtures</c> endpoint.</param>
         /// <returns>Deserialized response</returns>
         public async Task<TournamentFixturesResponse> GetTournamentFixturesAsync(TournamentFixturesRequestOptions options)
-        {
-            // tournaments/fixtures
-            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/tournaments/fixtures");
-            options.AddUrlParameters(ref uriBuilder);
-
-            var response = await GetAsync<TournamentFixturesResponse>(uriBuilder.ToString());
-
-            return response;
-        }
+            => await GetAsync<TournamentFixturesResponse>("tournaments/fixtures", options);
     }
 }

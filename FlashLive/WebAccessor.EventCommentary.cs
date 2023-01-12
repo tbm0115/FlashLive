@@ -14,14 +14,6 @@ namespace FlashLive
         /// <param name="options">Options available for the <c>events/commentary</c> endpoint.</param>
         /// <returns>Deserialized response</returns>
         public async Task<EventCommentaryResponse> GetEventCommentaryAsync(EventCommentaryRequestOptions options)
-        {
-            // events/commentary
-            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/events/commentary");
-            options.AddUrlParameters(ref uriBuilder);
-
-            var response = await GetAsync<EventCommentaryResponse>(uriBuilder.ToString());
-
-            return response;
-        }
+            => await GetAsync<EventCommentaryResponse>("events/commentary", options);
     }
 }

@@ -14,14 +14,6 @@ namespace FlashLive
         /// <param name="options">Options available for the <c>teams/fixtures</c> endpoint.</param>
         /// <returns>Deserialized response</returns>
         public async Task<TeamFixturesResponse> GetTeamFixturesAsync(TeamFixturesRequestOptions options)
-        {
-            // teams/fixtures
-            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/teams/fixtures");
-            options.AddUrlParameters(ref uriBuilder);
-
-            var response = await GetAsync<TeamFixturesResponse>(uriBuilder.ToString());
-
-            return response;
-        }
+            => await GetAsync<TeamFixturesResponse>("teams/fixtures", options);
     }
 }

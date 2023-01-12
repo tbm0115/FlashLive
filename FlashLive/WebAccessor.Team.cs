@@ -14,14 +14,6 @@ namespace FlashLive
         /// <param name="options">Options available for the <c>teams/data</c> endpoint.</param>
         /// <returns>Deserialized response</returns>
         public async Task<TeamResponse> GetTeamAsync(TeamRequestOptions options)
-        {
-            // teams/data
-            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/teams/data");
-            options.AddUrlParameters(ref uriBuilder);
-
-            var response = await GetAsync<TeamResponse>(uriBuilder.ToString());
-
-            return response;
-        }
+            => await GetAsync<TeamResponse>("teams/data", options);
     }
 }

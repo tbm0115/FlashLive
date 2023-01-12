@@ -14,14 +14,6 @@ namespace FlashLive
         /// <param name="options">Options available for the <c>teams/transfers</c> endpoint.</param>
         /// <returns>Deserialized response</returns>
         public async Task<TeamTransferResponse> GetTeamTransfersAsync(TeamTransferRequestOptions options)
-        {
-            // teams/transfers
-            var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/teams/transfers");
-            options.AddUrlParameters(ref uriBuilder);
-
-            var response = await GetAsync<TeamTransferResponse>(uriBuilder.ToString());
-
-            return response;
-        }
+            => await GetAsync<TeamTransferResponse>("teams/transfers", options);
     }
 }
