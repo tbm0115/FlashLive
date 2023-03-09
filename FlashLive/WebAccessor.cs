@@ -1,5 +1,4 @@
 ﻿using FlashLive.Models.Contracts;
-using FlashLive.Models.Responses;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
@@ -37,12 +36,23 @@ namespace FlashLive
 
         private string _apiKey;
 
+        /// <summary>
+        /// Constructs a new instance of a helper class capable of sending requests to the FlashLive API.
+        /// </summary>
+        /// <param name="apiKey">Reference to the RapidAPI key for the FlashLive API.</param>
         public WebAccessor(string apiKey)
         {
             _apiKey = apiKey;
         }
 
-        public virtual async Task<T> GetAsync<T>(string uri)
+        /// <summary>
+        /// Gets a <typeparamref name="T"/> from the provided <paramref name="uri"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of <see cref="IResponse"/> to be deserialized and returned from the response.</typeparam>
+        /// <param name="uri">Full API url to send the web request.</param>
+        /// <returns>Deserialized response from the API as <typeparamref name="T"/>.</returns>
+        /// <exception cref="NullReferenceException">Thrown either when the web response is empty or the object could not be deserialized.</exception>
+        public virtual async Task<T> GetAsync<T>(string uri) where T : IResponse
         {
             var json = await Client.GetStringAsync(uri);
 
@@ -61,6 +71,13 @@ namespace FlashLive
             return result;
         }
 
+        /// <summary>
+        /// Get a <typeparamref name="T"/> from the provided <paramref name="endpoint"/> in the FlashLive API.
+        /// </summary>
+        /// <typeparam name="T">Type of <see cref="IResponse"/> to be deserialized and returned from the response.</typeparam>
+        /// <param name="endpoint">API endpoint to be appended to the FlashLive URL.</param>
+        /// <param name="options">Optional reference of <see cref="IRequestOptions"/> to concatenate in the URL parameters.</param>
+        /// <returns>Deserialized response from the API as <typeparamref name="T"/>.</returns>
         public async Task<T> GetAsync<T>(string endpoint, IRequestOptions? options = null) where T : IResponse
         {
             var uriBuilder = new UriBuilder($"{API_ROOT_URI}/{API_VERSION}/{endpoint}");
